@@ -54,6 +54,9 @@ body{
     font-size: 32px;
     text-align: center;
 }
+.tagline em{
+    text-decoration: underline;
+}
 
 @media (max-width: 480px) {
     .logo-300 {
