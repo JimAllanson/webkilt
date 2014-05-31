@@ -58,7 +58,7 @@ body{
     text-decoration: underline;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 479px) {
     .logo-300 {
         display: block;
     }
@@ -74,7 +74,7 @@ body{
     }
 }
 
-@media (min-width: 480px) {
+@media (min-width: 480px) and (max-width:649px) {
     .logo-500 {
         display: block;
     }
