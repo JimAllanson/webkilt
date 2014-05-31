@@ -1,0 +1,104 @@
+html{
+    height:100%;
+}
+body{
+    background: url('http://i1.adis.ws/i/JIMC/8068540888_93e9673865_o');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    overflow: hidden;
+    font-family: Helvetica, Arial, sans-serif;
+    height:100%;
+    padding:0;
+    margin:0;
+    overflow:hidden;
+}
+
+.logo{
+    position:absolute;
+    top:0;
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    left:50%;
+}
+
+.kilt{
+    position:absolute;
+    top:300px;
+    left:50%;
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+}
+
+.attribution{
+    position:absolute;
+    right:15px;
+    bottom:0px;
+    padding:5px 10px;
+    background: rgba(0,0,0,0.8);
+}
+.attribution>a{
+    color:white;
+}
+
+.tagline{
+    position:absolute;
+    top:190px;
+    left:50%;
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    font-family: 'Josefin Slab', serif;
+    font-size: 32px;
+    text-align: center;
+}
+
+@media (max-width: 480px) {
+    .logo-300 {
+        display: block;
+    }
+    .logo-500, .logo-orig{
+        display:none
+    }
+    .tagline{
+        top:64px;
+        font-size:24px;
+    }
+    canvas{
+        margin-top:-50px;
+    }
+}
+
+@media (min-width: 480px) {
+    .logo-500 {
+        display: block;
+    }
+    .logo-300, .logo-orig{
+        display:none
+    }
+    .tagline{
+        top:110px;
+        font-size:30px;
+    }
+    canvas{
+        margin-top:50px;
+    }
+}
+
+@media (min-width: 650px) {
+    .logo-orig {
+        display: block;
+    }
+    .logo-300, .logo-500{
+        display:none
+    }
+    .tagline{
+        top:160px;
+        font-size:37px;
+    }
+    canvas{
+        margin-top:130px;
+    }
+}

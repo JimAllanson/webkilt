@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>WebKilt</title>
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,600,700,400italic,600italic,700italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="style.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/three.js/r67/three.min.js"></script>
+    <script src="detector.js"></script>
+    <script src="cloth.js"></script>
+
+</head>
+<body>
+<script type="x-shader/x-fragment" id="fragmentShaderDepth">
+
+    uniform sampler2D texture;
+    varying vec2 vUV;
+
+    vec4 pack_depth( const in float depth ) {
+
+    const vec4 bit_shift = vec4( 256.0 * 256.0 * 256.0, 256.0 * 256.0, 256.0, 1.0 );
+    const vec4 bit_mask  = vec4( 0.0, 1.0 / 256.0, 1.0 / 256.0, 1.0 / 256.0 );
+    vec4 res = fract( depth * bit_shift );
+    res -= res.xxyz * bit_mask;
+    return res;
+
+    }
+
+    void main() {
+
+    vec4 pixel = texture2D( texture, vUV );
+
+    if ( pixel.a < 0.5 ) discard;
+
+    gl_FragData[ 0 ] = pack_depth( gl_FragCoord.z );
+
+    }
+</script>
+
+<script type="x-shader/x-vertex" id="vertexShaderDepth">
+
+    varying vec2 vUV;
+
+    void main() {
+
+    vUV = 0.75 * uv;
+
+    vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+
+    gl_Position = projectionMatrix * mvPosition;
+
+    }
+
+</script>
+    <img src="http://i1.adis.ws/i/JIMC/logo.png?w=300" class="logo logo-300" alt="WebKilt">
+    <img src="http://i1.adis.ws/i/JIMC/logo.png?w=500" class="logo logo-500" alt="WebKilt">
+    <img src="http://i1.adis.ws/i/JIMC/logo.png" class="logo ogo-orig" alt="WebKilt">
+    <h2 class="tagline">The open alternative for web-based lower body apparel</h2>
+    <!--<img src="http://i1.adis.ws/i/JIMC/kilt.png?w=600" class="kilt" alt="Photo of a Kilt">-->
+    <p class="attribution"><a href="https://www.flickr.com/photos/martindelusenet/8068540888">Background &copy; Martin de Lusenet</a></p>
+    <a href="https://github.com/jimallanson/webkilt">
+        <img style="position: absolute; top: 0; right: 0; border: 0;"
+             src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67"
+             alt="Fork me on GitHub"
+             data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
+    </a>
+<script src="script.js"></script>
+</body>
+</html>
